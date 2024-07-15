@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Oisín"
+  given-names: "Creaner"
+  orcid: "https://orcid.org/0000-0002-1080-0090"
+title: "Stellar Matchmater"
+version: 2.0.4
+date-released: 2024-07-15
+url: "https://github.com/creanero/stellar_matchmaker"
