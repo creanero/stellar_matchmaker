@@ -57,7 +57,7 @@ def generate_query(obs, param):
 def run_query(obs, param):
 
     query = generate_query(obs, param)
-    job = Gaia.launch_job(query)
+    job = Gaia.launch_job_async(query)
     results = job.get_results()
     print(results)
 
@@ -89,7 +89,6 @@ def main():
     output_data(obs, param, result)
     
 
-    pass
 
 if __name__ == "__main__":
     main()
