@@ -9,8 +9,8 @@ from plot_stellar_matchmaker import generate_plot
 def get_inputs():
     obs = observation()
     # temporary values for testing and demo
-    obs.set_mag_limit(1 * u.mag)
-    obs.set_col_limit(1 * u.mag)
+    obs.set_mag_diff_limit(1 * u.mag)
+    obs.set_col_diff_limit(1 * u.mag)
     obs.set_ra_size(1 * u.deg)
     obs.set_dec_size(1 * u.deg)
 
