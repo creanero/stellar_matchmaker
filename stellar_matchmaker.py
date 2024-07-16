@@ -4,6 +4,7 @@ from astroquery.gaia import Gaia
 from observation import observation
 from Stellar_param import stellar_param
 from plot_stellar_matchmaker import generate_plot
+from Organize import organize
 
 
 def get_inputs():
@@ -51,12 +52,13 @@ def generate_query(obs, param):
              "FROM gaiadr3.gaia_source "
              "WHERE " + ra_clause +
              "AND " + dec_clause)
+    print(query)
     return query
 
 def run_query(obs, param):
 
     query = generate_query(obs, param)
-    job = Gaia.launch_job(query)
+    job = Gaia.launch_job_async(query)
     results = job.get_results()
     print(results)
 
@@ -83,10 +85,11 @@ def main():
     # skeleton stucture of the code, will be changed in future version
     obs, param = get_inputs()
     result = run_query(obs, param)
-    organise_data()
-    output_data(obs, param, result)
 
-    pass
+    result = organize(obs, param, result)
+    output_data(obs, param, result)
+    
+
 
 if __name__ == "__main__":
     main()
