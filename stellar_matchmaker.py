@@ -1,5 +1,5 @@
 import astropy.units as u
-from astropy.coordinates import SkyCoord
+from astropy.coordinates import SkyCoord, Angle
 from astroquery.gaia import Gaia
 from observation import observation
 from Stellar_param import stellar_param
@@ -7,15 +7,35 @@ from Stellar_param import stellar_param
 
 def get_inputs():
     obs = observation()
-    param = stellar_param()
+    # temporary values for testing and demo
+    obs.set_mag_limit(1 * u.mag)
+    obs.set_col_limit(1 * u.mag)
+    obs.set_ra_size(1 * u.deg)
+    obs.set_dec_size(1 * u.deg)
 
+    param = stellar_param()
+    # values for trappist-1
+    param.set_ra(Angle('23:6:29.37 hours'))
+    param.set_dec(Angle('-5:02:29.04 degrees'))
+    param.set_G(15.62 * u.mag)
+    param.set_bp(19.01 * u.mag)
+    param.set_rp(14.10 * u.mag)
+    
     return obs, param
 
 
 
 def generate_limits_clause(target, size, name):
-    hi = target + size
-    lo = target - size
+    try: 
+        hi = (target + size).to(u.deg)
+    except:
+        hi = (target + size)
+
+    try:
+        lo = (target - size).to(u.deg)
+    except:
+        lo = (target - size)
+
     clause = " {0} > {1} AND {0} < {2} ".format(name, lo.value, hi.value)
 
     return clause
