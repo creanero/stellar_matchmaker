@@ -52,6 +52,7 @@ def generate_query(obs, param):
              "FROM gaiadr3.gaia_source "
              "WHERE " + ra_clause +
              "AND " + dec_clause)
+    print(query)
     return query
 
 def run_query(obs, param):

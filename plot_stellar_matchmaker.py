@@ -18,6 +18,7 @@ def generate_plot(obs, param, results, figsize=10):
     plt.scatter(results['ra'], results['dec'], c=results['bp_rp'], cmap='RdYlBu_r',s=results['mag_size'], vmin=vmin, vmax=vmax)
     plt.xlabel('RA (deg)')
     plt.ylabel('DEC (deg)') 
+    plt.xlim(345.62, 347.62)
     plt.colorbar(label='BP-RP (mag)')
     plt.show()
 
