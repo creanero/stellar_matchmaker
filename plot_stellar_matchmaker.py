@@ -11,7 +11,9 @@ def main():
 def generate_plot(obs, param, results, figsize=10):
     plt.style.use('dark_background')
     fig = plt.figure(figsize=(figsize, figsize))
-    plt.scatter(results['ra'], results['dec'], c=results['phot_bp_mean_mag'], cmap='RdYlBu',s=results['phot_g_mean_mag'])
+    vmin=np.nanpercentile(results['bp_rp'],10)
+    vmax=np.nanpercentile(results['bp_rp'],90)
+    plt.scatter(results['ra'], results['dec'], c=results['bp_rp'], cmap='RdYlBu',s=results['mag_size'], vmin=vmin, vmax=vmax)
     plt.xlabel('RA (deg)')
     plt.ylabel('DEC (deg)') 
     plt.colorbar(label='BP Magnitude')

@@ -4,6 +4,7 @@ from astroquery.gaia import Gaia
 from observation import observation
 from Stellar_param import stellar_param
 from plot_stellar_matchmaker import generate_plot
+from Organize import organize
 
 
 def get_inputs():
@@ -83,8 +84,10 @@ def main():
     # skeleton stucture of the code, will be changed in future version
     obs, param = get_inputs()
     result = run_query(obs, param)
-    organise_data()
+
+    result = organize(obs, param, result)
     output_data(obs, param, result)
+    
 
     pass
 
