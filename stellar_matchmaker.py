@@ -1,13 +1,17 @@
-#!/usr/bin/env python3
-
 import astropy.units as u
 from astropy.coordinates import SkyCoord
 from astroquery.gaia import Gaia
-
+from observation import observation
+from Stellar_param import stellar_param
 
 
 def get_inputs():
-    pass
+    obs = observation()
+    param = stellar_param()
+
+    return obs, param
+
+
 
 def generate_limits_clause(target, size, name):
     hi = target + size
@@ -16,14 +20,10 @@ def generate_limits_clause(target, size, name):
 
     return clause
 
-def generate_query():
-    target_ra = 0.
-    ra_size = 0.125
-    ra_clause = generate_limits_clause(target_ra, ra_size, "ra")
+def generate_query(obs, param):
 
-    target_dec = 0.
-    dec_size = 0.125
-    dec_clause = generate_limits_clause(target_dec, dec_size, "dec")
+    ra_clause = generate_limits_clause(param.ra, obs.ra_size, "ra")
+    dec_clause = generate_limits_clause(param.dec, obs.dec_size, "dec")
 
     query = ("SELECT "
              "ra, dec, phot_g_mean_mag, phot_bp_mean_mag, phot_rp_mean_mag "
@@ -32,8 +32,9 @@ def generate_query():
              "AND " + dec_clause)
     return query
 
-def run_query():
-    query = generate_query()
+def run_query(obs, param):
+
+    query = generate_query(obs, param)
     job = Gaia.launch_job(query)
     results = job.get_results()
     print(results)
@@ -53,8 +54,8 @@ def main():
     """
 
     # skeleton stucture of the code, will be changed in future version
-    get_inputs()
-    run_query()
+    obs, param = get_inputs()
+    run_query(obs, param)
     organise_data()
     output_data()
 
