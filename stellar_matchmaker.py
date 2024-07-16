@@ -16,7 +16,7 @@ def get_inputs():
 def generate_limits_clause(target, size, name):
     hi = target + size
     lo = target - size
-    clause = "{0} > {1} AND {0} < {2}".format(name, lo, hi)
+    clause = " {0} > {1} AND {0} < {2} ".format(name, lo.value, hi.value)
 
     return clause
 
@@ -42,6 +42,8 @@ def run_query(obs, param):
 
 def organise_data():
     pass
+
+
 
 def output_data():
     pass
