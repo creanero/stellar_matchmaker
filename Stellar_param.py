@@ -33,7 +33,7 @@ class stellar_param:
         return self.G  
 
     def set_G(self, input_val):
-        if (input_val < (-1.5 * u.deg) or input_val >= (21 * u.mag)):
+        if (input_val < (-1.5 * u.mag) or input_val >= (21 * u.mag)):
             # https://www.aanda.org/articles/aa/full_html/2021/08/aa40735-21/aa40735-21.htm Gaia DR paper
             raise ValueError("Gaia G magnitude value out of scope, range limited by Gaia limiting magnitude.")
         else:
@@ -43,7 +43,7 @@ class stellar_param:
         return self.bp  
 
     def set_bp(self, input_val):
-        if (input_val < (-1.5 * u.deg) or input_val >= (21 * u.mag)):
+        if (input_val < (-1.5 * u.mag) or input_val >= (21 * u.mag)):
             # https://www.aanda.org/articles/aa/full_html/2021/08/aa40735-21/aa40735-21.htm Gaia DR paper
             raise ValueError("Gaia bp magnitude value out of scope, range limited by Gaia limiting magnitude.")
         else:
@@ -53,7 +53,7 @@ class stellar_param:
         return self.rp  
 
     def set_rp(self, input_val):
-        if (input_val < (-1.5 * u.deg) or input_val >= (21 * u.mag)):
+        if (input_val < (-1.5 * u.mag) or input_val >= (21 * u.mag)):
             # https://www.aanda.org/articles/aa/full_html/2021/08/aa40735-21/aa40735-21.htm Gaia DR paper
             raise ValueError("Gaia rp magnitude value out of scope, range limited by Gaia limiting magnitude.")
         else:
