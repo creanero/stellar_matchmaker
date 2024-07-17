@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: stellar_matchmaker
+Version: 0.0.1
+Summary: A package to identify and select reference stars by colour and magnitude
+Author-email: Oisín Creaner <oisin.creaner@dcu.ie>, Taehwa Yoo <t.yoo@ufl.edu>, Vidya Venkatesan <vidyav1@uci.edu>, Kene Anumba <jka29@duke.edu>
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: astropy
+Requires-Dist: matplotlib
+Requires-Dist: astroquery
+
+# Stellar Matchmaker
+This is a software package to match input targets to reference stars for differential photometry in Exoplanet transit observations
