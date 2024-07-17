@@ -11,6 +11,15 @@ authors = [
   { name="Vidya Venkatesan", email="vidyav1@uci.edu" },
   { name="Kene Anumba", email="jka29@duke.edu" }
 ]
+description = "A package to identify and select reference stars by colour and magnitude"
+readme = "README.md"
+requires-python = ">=3.10"
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
 dependencies = [
     "numpy", "astropy", "matplotlib", "astroquery"
 ]
