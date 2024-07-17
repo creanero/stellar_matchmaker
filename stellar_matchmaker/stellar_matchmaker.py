@@ -10,8 +10,9 @@ from Organize import organize
 def get_inputs():
     obs = observation()
     # temporary values for testing and demo
-    obs.set_mag_limit(1 * u.mag)
-    obs.set_col_limit(1 * u.mag)
+    obs.set_mag_limit(15 * u.mag)
+    obs.set_mag_diff_limit(1 * u.mag)
+    obs.set_col_diff_limit(1 * u.mag)
     obs.set_ra_size(1 * u.deg)
     obs.set_dec_size(1 * u.deg)
 
@@ -38,7 +39,7 @@ def generate_limits_clause(target, size, name):
     except:
         lo = (target - size)
 
-    clause = " {0} > {1} ND {0} < {2} ".format(name, lo.value, hi.value)
+    clause = " {0} > {1} AND {0} < {2} ".format(name, lo.value, hi.value)
 
     return clause
 
@@ -46,19 +47,21 @@ def generate_query(obs, param):
 
     ra_clause = generate_limits_clause(param.ra, obs.ra_size, "ra")
     dec_clause = generate_limits_clause(param.dec, obs.dec_size, "dec")
+    mag_clause = " phot_g_mean_mag < {}".format(float(obs.mag_limit / u.mag))
 
     query = ("SELECT "
              "ra, dec, phot_g_mean_mag, phot_bp_mean_mag, phot_rp_mean_mag "
              "FROM gaiadr3.gaia_source "
              "WHERE " + ra_clause +
-             "AND " + dec_clause)
+             "AND " + dec_clause +
+             "AND " + mag_clause)
     print(query)
     return query
 
 def run_query(obs, param):
 
     query = generate_query(obs, param)
-    job = Gaia.launch_job(query)
+    job = Gaia.launch_job_async(query)
     results = job.get_results()
     print(results)
 
@@ -90,7 +93,7 @@ def main():
     output_data(obs, param, result)
     
 
-    pass
+    
 
 if __name__ == "__main__":
     main()
