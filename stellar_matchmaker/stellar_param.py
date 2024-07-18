@@ -2,7 +2,7 @@
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 
-class stellar_param:
+class Stellar_param:
 
     def __init__(self):
         self.ra = 0 *u.deg
