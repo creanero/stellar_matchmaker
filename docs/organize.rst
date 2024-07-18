@@ -5,5 +5,5 @@ Organize Functions
 
 Function to perform organizing the data values to be plotted.
 
-.. automodule:: Organize
+.. automodule:: organize
    :members:
