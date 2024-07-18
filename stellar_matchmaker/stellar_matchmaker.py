@@ -47,13 +47,17 @@ def generate_query(obs, param):
 
     ra_clause = generate_limits_clause(param.ra, obs.ra_size, "ra")
     dec_clause = generate_limits_clause(param.dec, obs.dec_size, "dec")
+    box_clause = " CONTAINS(POINT('ICRS', ra, dec), BOX('ICRS', {}, {}, {}, {})) = 1 ".format(param.ra.to(u.deg).value,
+                                                                                          param.dec.to(u.deg).value,
+                                                                                          2*obs.ra_size.to(u.deg).value,
+                                                                                          2*obs.dec_size.to(u.deg).value)
+
     mag_clause = " phot_g_mean_mag < {}".format(float(obs.mag_limit / u.mag))
 
     query = ("SELECT "
              "ra, dec, phot_g_mean_mag, phot_bp_mean_mag, phot_rp_mean_mag "
              "FROM gaiadr3.gaia_source "
-             "WHERE " + ra_clause +
-             "AND " + dec_clause +
+             "WHERE " + box_clause +
              "AND " + mag_clause)
     # print(query)
     return query
