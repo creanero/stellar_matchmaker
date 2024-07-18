@@ -5,6 +5,8 @@ from .observation import observation
 from .Stellar_param import stellar_param
 from .plot_stellar_matchmaker import generate_plot
 from .Organize import organize
+import pandas as pd
+import numpy as np
 
 
 def get_inputs():
@@ -66,8 +68,10 @@ def run_query(obs, param):
 
     query = generate_query(obs, param)
     job = Gaia.launch_job_async(query)
+    
     results = job.get_results()
-    # print(results)
+    results.write('~/results.csv', format='ascii', overwrite=True)  
+
 
     return results
 
