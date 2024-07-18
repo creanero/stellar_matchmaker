@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>plot_stellar_matchmaker Functions &mdash; stellar_matchmaker 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -23,7 +22,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="stellar_matchmaker Functions" href="stellar_matchmaker.html" />
-    <link rel="prev" title="Organize Functions" href="Organize.html" /> 
+    <link rel="prev" title="Organize Functions" href="organize.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,8 +48,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="observation.html">observation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stellar_param.html">stellar_param Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Organize.html">Organize Functions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">plot_stellar_matchmaker Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="organize.html">Organize Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">plot_stellar_matchmaker Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#plot_stellar_matchmaker.generate_plot"><code class="docutils literal notranslate"><span class="pre">generate_plot()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="stellar_matchmaker.html">stellar_matchmaker Functions</a></li>
 </ul>
 
@@ -78,16 +80,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="plot-stellar-matchmaker-functions">
+  <div class="section" id="plot-stellar-matchmaker-functions">
 <span id="plot-stellar-matchmaker"></span><h1>plot_stellar_matchmaker Functions<a class="headerlink" href="#plot-stellar-matchmaker-functions" title="Permalink to this heading"></a></h1>
 <p>Function to perform making plots from the results of the query.</p>
-</section>
+<span class="target" id="module-plot_stellar_matchmaker"></span><dl class="py function">
+<dt class="sig sig-object py" id="plot_stellar_matchmaker.generate_plot">
+<span class="sig-prename descclassname"><span class="pre">plot_stellar_matchmaker.</span></span><span class="sig-name descname"><span class="pre">generate_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plot_stellar_matchmaker.generate_plot" title="Permalink to this definition"></a></dt>
+<dd><p>This function simply plots the target star and the reference stars.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obs</strong> (<em>object</em>) – Object carrying information about class observation.</p></li>
+<li><p><strong>params</strong> (<em>object</em>) – Object carrying information from class stellar_param has info about filters and mags.</p></li>
+<li><p><strong>results</strong> (<em>astropy tables</em>) – Object carrying information about Gaia query from the target star.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Organize.html" class="btn btn-neutral float-left" title="Organize Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="organize.html" class="btn btn-neutral float-left" title="Organize Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="stellar_matchmaker.html" class="btn btn-neutral float-right" title="stellar_matchmaker Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

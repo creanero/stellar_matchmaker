@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>stellar_matchmaker Functions &mdash; stellar_matchmaker 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -48,9 +47,15 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="observation.html">observation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stellar_param.html">stellar_param Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Organize.html">Organize Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="organize.html">Organize Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_stellar_matchmaker.html">plot_stellar_matchmaker Functions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">stellar_matchmaker Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">stellar_matchmaker Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stellar_matchmaker.generate_limits_clause"><code class="docutils literal notranslate"><span class="pre">generate_limits_clause()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stellar_matchmaker.generate_query"><code class="docutils literal notranslate"><span class="pre">generate_query()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stellar_matchmaker.get_inputs"><code class="docutils literal notranslate"><span class="pre">get_inputs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stellar_matchmaker.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -77,10 +82,88 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="stellar-matchmaker-functions">
+  <div class="section" id="stellar-matchmaker-functions">
 <span id="stellar-matchmaker"></span><h1>stellar_matchmaker Functions<a class="headerlink" href="#stellar-matchmaker-functions" title="Permalink to this heading"></a></h1>
 <p>Function to perform matching stars.</p>
-<span class="target" id="module-stellar_matchmaker"></span></section>
+<span class="target" id="module-stellar_matchmaker"></span><dl class="py function">
+<dt class="sig sig-object py" id="stellar_matchmaker.generate_limits_clause">
+<span class="sig-prename descclassname"><span class="pre">stellar_matchmaker.</span></span><span class="sig-name descname"><span class="pre">generate_limits_clause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stellar_matchmaker.generate_limits_clause" title="Permalink to this definition"></a></dt>
+<dd><p>This function generates the clause for the query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>float</em>) – The target value.</p></li>
+<li><p><strong>size</strong> (<em>float</em>) – The range of the value.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The name of the value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>clause</strong> – The clause for the query.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="stellar_matchmaker.generate_query">
+<span class="sig-prename descclassname"><span class="pre">stellar_matchmaker.</span></span><span class="sig-name descname"><span class="pre">generate_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stellar_matchmaker.generate_query" title="Permalink to this definition"></a></dt>
+<dd><p>This function generates the query for the Gaia database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obs</strong> (<em>object</em>) – Observation class object, contains information about the observational parameters used to set mag limit etc.</p></li>
+<li><p><strong>param</strong> (<em>object</em>) – Stellar parameter object, contains information about the target: position and 3 magnitudes, used to compare with references</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>query</strong> – The query for the Gaia database.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="stellar_matchmaker.get_inputs">
+<span class="sig-prename descclassname"><span class="pre">stellar_matchmaker.</span></span><span class="sig-name descname"><span class="pre">get_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">askinfo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'23:6:29.37'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-5:02:29.04'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15.62</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">19.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mag_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mag_diff_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_diff_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stellar_matchmaker.get_inputs" title="Permalink to this definition"></a></dt>
+<dd><p>This function is used to get the inputs for the program.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>askinfo</strong> (<em>bool</em>) – If True, the user will be prompted to enter the values. If False, the default values will be used.</p></li>
+<li><p><strong>ra</strong> (<em>str</em>) – RA (h:m:s)</p></li>
+<li><p><strong>dec</strong> (<em>str</em>) – Dec (h:m:s)</p></li>
+<li><p><strong>G</strong> (<em>float</em>) – G magnitude</p></li>
+<li><p><strong>bp</strong> (<em>float</em>) – BP magnitude</p></li>
+<li><p><strong>rp</strong> (<em>float</em>) – RP magnitude</p></li>
+<li><p><strong>mag_limit</strong> (<em>float</em>) – limiting magnitude of the detector</p></li>
+<li><p><strong>mag_diff_limit</strong> (<em>float</em>) – maximum difference between target and reference</p></li>
+<li><p><strong>col_diff_limit</strong> (<em>float</em>) – maximum difference between target and reference</p></li>
+<li><p><strong>ra_size</strong> (<em>float</em>) – size of the region to search for reference stars in RA (deg)</p></li>
+<li><p><strong>dec_size</strong> (<em>float</em>) – size of the region to search for reference stars in DEC (deg)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>obs</strong> (<em>object</em>) – Observation class object, contains information about the observational parameters used to set mag limit etc.</p></li>
+<li><p><strong>results</strong> (<em>astropy.table</em>) – astropy table object, as per the input but with colour and size term as new columns</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="stellar_matchmaker.main">
+<span class="sig-prename descclassname"><span class="pre">stellar_matchmaker.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stellar_matchmaker.main" title="Permalink to this definition"></a></dt>
+<dd><p>This function is only called if this program is executed in standalone format.</p>
+<p>If we import the functions, this will not be called.</p>
+</dd></dl>
+
+</div>
 
 
            </div>
