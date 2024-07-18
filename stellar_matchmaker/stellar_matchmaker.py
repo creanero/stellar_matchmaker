@@ -12,7 +12,7 @@ def get_inputs():
     # temporary values for testing and demo
     obs.set_mag_limit(15 * u.mag)
     obs.set_mag_diff_limit(1 * u.mag)
-    obs.set_col_diff_limit(1 * u.mag)
+    obs.set_col_diff_limit(5 * u.mag)
     obs.set_ra_size(1 * u.deg)
     obs.set_dec_size(1 * u.deg)
 
@@ -55,7 +55,7 @@ def generate_query(obs, param):
              "WHERE " + ra_clause +
              "AND " + dec_clause +
              "AND " + mag_clause)
-    print(query)
+    # print(query)
     return query
 
 def run_query(obs, param):
@@ -63,7 +63,7 @@ def run_query(obs, param):
     query = generate_query(obs, param)
     job = Gaia.launch_job_async(query)
     results = job.get_results()
-    print(results)
+    # print(results)
 
     return results
 
