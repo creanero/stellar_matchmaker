@@ -1,13 +1,21 @@
 import astropy.units as u
 from astropy.coordinates import SkyCoord, Angle
 from astroquery.gaia import Gaia
-from .observation import observation
-from .Stellar_param import stellar_param
-from .plot_stellar_matchmaker import generate_plot
-from .Organize import organize
+
 import pandas as pd
 import numpy as np
 
+if __name__ == "__main__":
+    from observation import Observation
+    from stellar_param import Stellar_param
+    from plot_stellar_matchmaker import generate_plot
+    from organize import organize
+
+else:
+    from .observation import Observation
+    from .stellar_param import Stellar_param
+    from .plot_stellar_matchmaker import generate_plot
+    from .organize import organize
 
 
 def get_inputs(askinfo=True, ra='23:6:29.37', dec='-5:02:29.04', 
@@ -50,7 +58,7 @@ def get_inputs(askinfo=True, ra='23:6:29.37', dec='-5:02:29.04',
         astropy table object, as per the input but with colour and size term as new columns
     """
 
-    obs = observation()
+    obs = Observation()
     if askinfo:
         ra_input = input("Please enter the RA of the target. default) 23:6:29.37 ")
         if ra_input=='':
@@ -111,7 +119,7 @@ def get_inputs(askinfo=True, ra='23:6:29.37', dec='-5:02:29.04',
     obs.set_ra_size(ra_size * u.deg)
     obs.set_dec_size(dec_size * u.deg)
 
-    param = stellar_param()
+    param = Stellar_param()
 
     param.set_ra(Angle('%s hours'%ra))
     param.set_dec(Angle('%s degrees'%dec))

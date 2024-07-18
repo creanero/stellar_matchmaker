@@ -2,8 +2,17 @@
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 
-class stellar_param:
+class Stellar_param:
+    """
+    This class contains the parameters of a star. 
 
+    Class variables
+    ra: Right Ascension
+    dec: Declination
+    G: Gaia G magnitude
+    bp: Gaia bp magnitude
+    rp: Gaia rp magnitude
+    """
     def __init__(self):
         self.ra = 0 *u.deg
         self.dec = 0 *u.deg

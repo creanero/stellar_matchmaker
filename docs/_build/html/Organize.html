@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Organize Functions &mdash; stellar_matchmaker 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -49,7 +48,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="observation.html">observation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stellar_param.html">stellar_param Functions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Organize Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Organize Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#organize.good_ref"><code class="docutils literal notranslate"><span class="pre">good_ref()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#organize.organize"><code class="docutils literal notranslate"><span class="pre">organize()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="plot_stellar_matchmaker.html">plot_stellar_matchmaker Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stellar_matchmaker.html">stellar_matchmaker Functions</a></li>
 </ul>
@@ -70,7 +73,7 @@
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Organize Functions</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/Organize.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/organize.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -78,10 +81,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="organize-functions">
+  <div class="section" id="organize-functions">
 <span id="organize"></span><h1>Organize Functions<a class="headerlink" href="#organize-functions" title="Permalink to this heading"></a></h1>
 <p>Function to perform organizing the data values to be plotted.</p>
-</section>
+<span class="target" id="module-organize"></span><dl class="py function">
+<dt class="sig sig-object py" id="organize.good_ref">
+<span class="sig-prename descclassname"><span class="pre">organize.</span></span><span class="sig-name descname"><span class="pre">good_ref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#organize.good_ref" title="Permalink to this definition"></a></dt>
+<dd><p>find the stars satisfying the criteria</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obs</strong> (<em>object</em>) – Observation class object, contains information about the observational parameters used to set mag limit etc.</p></li>
+<li><p><strong>param</strong> (<em>object</em>) – Stellar parameter object, contains information about the target: position and 3 magnitudes, used to compare with references</p></li>
+<li><p><strong>results</strong> (<em>astropy.table</em>) – astropy table object, with columns for reference star position and magnitudes, used to calculate size to plot and colour</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – astropy table object with the added column ‘good’</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>astropy.table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="organize.organize">
+<span class="sig-prename descclassname"><span class="pre">organize.</span></span><span class="sig-name descname"><span class="pre">organize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#organize.organize" title="Permalink to this definition"></a></dt>
+<dd><p>Organise the data for plotting.
+Runs calculations on the results based on the observation and star parameters to allow it to be plotted clearly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obs</strong> (<em>object</em>) – Observation class object, contains information about the observational parameters used to set mag limit etc.</p></li>
+<li><p><strong>param</strong> (<em>object</em>) – Stellar parameter object, contains information about the target: position and 3 magnitudes, used to compare with references</p></li>
+<li><p><strong>results</strong> (<em>astropy.table</em>) – astropy table object, with columns for reference star position and magnitudes, used to calculate size to plot and colour</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – astropy table object, as per the input but with colour and size term as new columns</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>astropy.table</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 
 
            </div>
