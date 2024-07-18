@@ -14,6 +14,11 @@ Welcome to Stellar Matchmaker!
    
    Quickstart
    Testing
+   observation.rst
+   stellar_param.rst
+   Organize.rst
+   plot_stellar_matchmaker.rst
+   stellar_matchmaker.rst
 
 
 

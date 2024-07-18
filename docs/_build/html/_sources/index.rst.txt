@@ -12,8 +12,13 @@ Welcome to Stellar Matchmaker!
    :maxdepth: 2
    :caption: Contents:
    
-   Quickstartop
+   Quickstart
    Testing
+   observation.rst
+   stellar_param.rst
+   Organize.rst
+   plot_stellar_matchmaker.rst
+   stellar_matchmaker.rst
 
 
 
