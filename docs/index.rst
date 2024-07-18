@@ -16,7 +16,7 @@ Welcome to Stellar Matchmaker!
    Testing
    observation.rst
    stellar_param.rst
-   Organize.rst
+   organize.rst
    plot_stellar_matchmaker.rst
    stellar_matchmaker.rst
 
