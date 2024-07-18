@@ -55,15 +55,52 @@ def get_inputs(askinfo=True, ra='23:6:29.37', dec='-5:02:29.04',
             ra=ra
         else:
             ra=ra_input
-        dec = input("Please enter the DEC of the target. default) -5:02:29.04 ")
-        G = float(input("Please enter the G magnitude of the target. default) 15.62 "))
-        bp = float(input("Please enter the BP magnitude of the target. default) 19.01 "))
-        rp = float(input("Please enter the RP magnitude of the target. default) 14.10 "))
-        mag_limit = float(input("Please enter the limiting magnitude of the detector. default) 15 "))
-        mag_diff_limit = float(input("Please enter the maximum difference of the G magnitude from the target. default) 1 "))
-        col_diff_limit = float(input("Please enter the maximum difference of the BP-RP magnitude from the target. default) 5 "))
-        ra_size = float(input("Please enter the size of the region to search for reference stars in RA deg. default) 1 "))
-        dec_size = float(input("Please enter the size of the region to search for reference stars in DEC deg. default) 1 "))
+        dec_input = input("Please enter the DEC of the target. default) -5:02:29.04 ")
+        if dec_input=='':
+            dec=dec
+        else:
+            dec=dec_input
+        G_input = input("Please enter the G magnitude of the target. default) 15.62 ")
+        if G_input=='':
+            G=G 
+        else:
+            G=float(G_input)
+        bp_input = input("Please enter the BP magnitude of the target. default) 19.01 ")
+        if bp_input=='':
+            bp=bp
+        else:
+            bp=float(bp_input)
+        rp_input = input("Please enter the RP magnitude of the target. default) 14.10 ")
+        if rp_input=='':
+            rp=rp
+        else:
+            rp=float(rp_input)
+        mag_limit_input = input("Please enter the limiting magnitude of the detector. default) 15 ")
+        if mag_limit_input=='':
+            mag_limit=mag_limit
+        else:
+            mag_limit=float(mag_limit_input)
+        mag_diff_limit_input = input("Please enter the maximum difference of the G magnitude from the target. default) 1 ")
+        if mag_diff_limit_input=='':
+            mag_diff_limit=mag_diff_limit
+        else:
+            mag_diff_limit=float(mag_diff_limit_input)
+        col_diff_limit_input = input("Please enter the maximum difference of the BP-RP magnitude from the target. default) 5 ")
+        if col_diff_limit_input=='':
+            col_diff_limit=col_diff_limit
+        else:
+            col_diff_limit=float(col_diff_limit_input)
+        ra_size_input = input("Please enter the size of the region to search for reference stars in RA deg. default) 1 ")
+        if ra_size_input=='':
+            ra_size=ra_size
+        else:
+            ra_size=float(ra_size_input)
+        dec_size_input = input("Please enter the size of the region to search for reference stars in DEC deg. default) 1 ")
+        if dec_size_input=='':
+            dec_size=dec_size
+        else:
+            dec_size=float(dec_size_input)
+        
 
 
     obs.set_mag_limit(mag_limit * u.mag)
@@ -120,7 +157,21 @@ def generate_limits_clause(target, size, name):
     return clause
 
 def generate_query(obs, param):
+    """
+    This function generates the query for the Gaia database.
 
+    args
+    ------
+    obs : object
+        Observation class object, contains information about the observational parameters used to set mag limit etc.
+    param : object
+        Stellar parameter object, contains information about the target: position and 3 magnitudes, used to compare with references
+    
+    return
+    ------
+    query : str
+        The query for the Gaia database.
+    """
     ra_clause = generate_limits_clause(param.ra, obs.ra_size, "ra")
     dec_clause = generate_limits_clause(param.dec, obs.dec_size, "dec")
     mag_clause = " phot_g_mean_mag < {}".format(float(obs.mag_limit / u.mag))

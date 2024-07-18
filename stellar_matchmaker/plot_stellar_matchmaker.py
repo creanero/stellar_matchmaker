@@ -10,15 +10,19 @@ def main():
 
 def generate_plot(obs, param, results, figsize=10):
     
-    """Plot the outputs.
+    """
 
     This function simply plots the target star and the reference stars.
 
-    Args:
-        obs (object) : Object carrying information about class observation.
-        params (object) : Object carrying information from class stellar_param has info about filters and mags.
-        results(astropy tables): Object carrying information about Gaia query from the target star.
-        
+    Args
+    ------
+    obs: object
+        Object carrying information about class observation.
+    params: object
+        Object carrying information from class stellar_param has info about filters and mags.
+    results: astropy tables
+        Object carrying information about Gaia query from the target star.
+
     """
     plt.style.use('dark_background')
     fig = plt.figure(figsize=(figsize, figsize))
@@ -32,7 +36,6 @@ def generate_plot(obs, param, results, figsize=10):
     
     plt.xlabel('RA (deg)')
     plt.ylabel('DEC (deg)') 
-    plt.xlim(345.62, 347.62)
     plt.colorbar(label='BP-RP (mag)')
 
     good_refs=results[results["good"] == True]
