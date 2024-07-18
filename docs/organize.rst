@@ -1,4 +1,4 @@
-.. _Organize:
+.. _organize:
 
 Organize Functions
 =====================
