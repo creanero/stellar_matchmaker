@@ -2,7 +2,10 @@ from astropy import units as u
 from astropy.coordinates import SkyCoord
 
 class observation:
-
+    """ 
+    Set the observational parameters.
+    Limit the magnitude of the detector, the maximum difference between target and reference, and the size of the region to search for reference stars.
+    """
     def __init__(self):
         self.mag_diff_limit = 0 *u.mag
         self.col_diff_limit = 0 *u.mag
@@ -19,7 +22,7 @@ class observation:
         else:
             self.mag_limit = input_val
     
-    # maximum difference between target and reference
+    # limiting maximum difference between target and reference
     def get_mag_diff_limit(self):
         return self.mag_diff_limit  
 
@@ -28,7 +31,8 @@ class observation:
             raise ValueError("Magnitude difference limit value out of scope, range limited to 0 to 5 magnitudes.")
         else:
             self.mag_diff_limit = input_val
-
+   
+    # limiting color difference between target and reference
     def get_col_limit(self):
         return self.col_diff_limit
     
@@ -38,6 +42,7 @@ class observation:
         else:
             self.col_diff_limit = input_val
             
+    # limiting size of region to search for reference stars
     def get_ra_size(self):
         return self.ra_size
     

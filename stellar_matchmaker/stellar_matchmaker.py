@@ -7,22 +7,33 @@ from plot_stellar_matchmaker import generate_plot
 from Organize import organize
 
 
-def get_inputs():
+def get_inputs(ra='23:6:29.37', dec='-5:02:29.04', G=15.62, bp=19.01, rp=14.10, mag_limit=15, mag_diff_limit=1, col_diff_limit=5, ra_size=1, dec_size=1):
+    """
+    This function is used to get the inputs for the program.
+
+    Args:
+        obs (Observation): Observation class object, contains information about the observational parameters used to set mag limit etc.
+        param (Setllar_param): Stellar parameter object, contains information about the target: position and 3 magnitudes, used to compare with references
+        results (astropy.table): astropy table object, with columns for reference star position and magnitudes, used to calculate size to plot and colour
+    
+    Returns:
+        results (astropy.table): astropy table object, as per the input but with colour and size term as new columns
+    """
     obs = observation()
     # temporary values for testing and demo
-    obs.set_mag_limit(15 * u.mag)
-    obs.set_mag_diff_limit(1 * u.mag)
-    obs.set_col_diff_limit(5 * u.mag)
-    obs.set_ra_size(1 * u.deg)
-    obs.set_dec_size(1 * u.deg)
+    obs.set_mag_limit(mag_limit * u.mag)
+    obs.set_mag_diff_limit(mag_diff_limit * u.mag)
+    obs.set_col_diff_limit(col_diff_limit * u.mag)
+    obs.set_ra_size(ra_size * u.deg)
+    obs.set_dec_size(dec_size * u.deg)
 
     param = stellar_param()
     # values for trappist-1
-    param.set_ra(Angle('23:6:29.37 hours'))
-    param.set_dec(Angle('-5:02:29.04 degrees'))
-    param.set_G(15.62 * u.mag)
-    param.set_bp(19.01 * u.mag)
-    param.set_rp(14.10 * u.mag)
+    param.set_ra(Angle('%s hours'%ra))
+    param.set_dec(Angle('%s degrees'%dec))
+    param.set_G(G * u.mag)
+    param.set_bp(bp * u.mag)
+    param.set_rp(rp * u.mag)
     
     return obs, param
 

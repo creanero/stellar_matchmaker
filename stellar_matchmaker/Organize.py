@@ -2,8 +2,8 @@ import numpy as np
 import astropy.units as u
 
 def organize(obs, param, results):
-    """ Organise the data for plotting
-    
+    """ 
+    Organise the data for plotting.
     Runs calculations on the results based on the observation and star parameters to allow it to be plotted clearly.
 
     Args:
@@ -23,6 +23,18 @@ def organize(obs, param, results):
     return results
 
 def good_ref(obs, param, results):
+    """ 
+    
+    find the stars satisfying the criteria
+
+    Args:
+        obs (Observation): Observation class object, contains information about the observational parameters used to set mag limit etc.
+        param (Setllar_param): Stellar parameter object, contains information about the target: position and 3 magnitudes, used to compare with references
+        results (astropy.table): astropy table object, with columns for reference star position and magnitudes, used to calculate size to plot and colour
+    
+    Returns:
+        results (astropy.table): astropy table object with the added column 'good' 
+    """
     mag_diff=abs(param.G - results["phot_g_mean_mag"])
     target_col = (param.bp-param.rp)
     col_diff=abs(target_col - results["bp_rp"]*u.mag)
