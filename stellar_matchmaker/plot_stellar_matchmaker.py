@@ -26,11 +26,11 @@ def generate_plot(obs, param, results, figsize=10):
     print(type(bp_rp))
     vmin=np.nanpercentile(bp_rp,10, method='nearest')
     vmax=np.nanpercentile(bp_rp,90, method='nearest')
-    plt.gca().invert_xaxis()
+
     plt.scatter(param.ra.to(u.deg), param.dec.to(u.deg), color = "w", marker = "*", s=1000)
 
     plt.scatter(results['ra'], results['dec'], c=results['bp_rp'], cmap='RdYlBu_r',s=results['mag_size'], vmin=vmin, vmax=vmax)
-    
+
     plt.xlabel('RA (deg)')
     plt.ylabel('DEC (deg)') 
     plt.xlim(345.62, 347.62)
@@ -39,7 +39,7 @@ def generate_plot(obs, param, results, figsize=10):
     good_refs=results[results["good"] == True]
     print(good_refs)
     plt.scatter(good_refs['ra'], good_refs['dec'], color = "limegreen", marker="o", s=20, facecolors='none')
-
+    plt.gca().invert_xaxis()
     plt.show()
 
 if __name__ == "__main__":
