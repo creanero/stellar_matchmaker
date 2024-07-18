@@ -1,7 +1,7 @@
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 
-class observation:
+class Observation:
     """ 
     Set the observational parameters.
     Limit the magnitude of the detector, the maximum difference between target and reference, and the size of the region to search for reference stars.
