@@ -1,8 +1,8 @@
 import astropy.units as u
 from astropy.coordinates import SkyCoord, Angle
 from astroquery.gaia import Gaia
-from .observation import observation
-from .stellar_param import stellar_param
+from .observation import Observation
+from .stellar_param import Stellar_param
 from .plot_stellar_matchmaker import generate_plot
 from .organize import organize
 import pandas as pd
