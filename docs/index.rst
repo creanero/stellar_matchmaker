@@ -9,8 +9,9 @@ Welcome to Stellar Matchmaker!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-   stellar_matchmaker.rst
+   
+   Quickstartop
+   Testing
 
 
 
