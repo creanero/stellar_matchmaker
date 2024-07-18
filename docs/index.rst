@@ -2,7 +2,9 @@
    sphinx-quickstart on Wed Jul 17 11:17:59 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
-
+.. image:: ../logo.png
+  :width: 400
+  :alt: Alternative text
 Welcome to Stellar Matchmaker!
 ==============================================
 
@@ -10,7 +12,7 @@ Welcome to Stellar Matchmaker!
    :maxdepth: 2
    :caption: Contents:
    
-   Quickstartop
+   Quickstart
    Testing
 
 

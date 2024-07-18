@@ -7,20 +7,65 @@ from plot_stellar_matchmaker import generate_plot
 from Organize import organize
 
 
-def get_inputs(ra='23:6:29.37', dec='-5:02:29.04', G=15.62, bp=19.01, rp=14.10, mag_limit=15, mag_diff_limit=1, col_diff_limit=5, ra_size=1, dec_size=1):
+
+def get_inputs(askinfo=True, ra='23:6:29.37', dec='-5:02:29.04', 
+               G=15.62, bp=19.01, rp=14.10, 
+               mag_limit=15, mag_diff_limit=1, col_diff_limit=5, ra_size=1, dec_size=1):
     """
     This function is used to get the inputs for the program.
 
-    Args:
-        obs (Observation): Observation class object, contains information about the observational parameters used to set mag limit etc.
-        param (Setllar_param): Stellar parameter object, contains information about the target: position and 3 magnitudes, used to compare with references
-        results (astropy.table): astropy table object, with columns for reference star position and magnitudes, used to calculate size to plot and colour
+    Args
+    ------
+    askinfo : bool
+        If True, the user will be prompted to enter the values. If False, the default values will be used.
+    ra : str
+        RA (h:m:s) 
+    dec : str
+        Dec (h:m:s)
+    G : float
+        G magnitude
+    bp : float
+        BP magnitude
+    rp : float
+        RP magnitude
+    mag_limit : float
+        limiting magnitude of the detector
+    mag_diff_limit : float
+        maximum difference between target and reference
+    col_diff_limit : float
+        maximum difference between target and reference
+    ra_size : float
+        size of the region to search for reference stars in RA (deg)
+    dec_size : float
+        size of the region to search for reference stars in DEC (deg)
     
-    Returns:
-        results (astropy.table): astropy table object, as per the input but with colour and size term as new columns
+
+    Returns
+    ------
+    obs: object
+        Observation class object, contains information about the observational parameters used to set mag limit etc.
+    results: astropy.table
+        astropy table object, as per the input but with colour and size term as new columns
     """
+
     obs = observation()
-    # temporary values for testing and demo
+    if askinfo:
+        ra_input = input("Please enter the RA of the target. default) 23:6:29.37 ")
+        if ra_input=='':
+            ra=ra
+        else:
+            ra=ra_input
+        dec = input("Please enter the DEC of the target. default) -5:02:29.04 ")
+        G = float(input("Please enter the G magnitude of the target. default) 15.62 "))
+        bp = float(input("Please enter the BP magnitude of the target. default) 19.01 "))
+        rp = float(input("Please enter the RP magnitude of the target. default) 14.10 "))
+        mag_limit = float(input("Please enter the limiting magnitude of the detector. default) 15 "))
+        mag_diff_limit = float(input("Please enter the maximum difference of the G magnitude from the target. default) 1 "))
+        col_diff_limit = float(input("Please enter the maximum difference of the BP-RP magnitude from the target. default) 5 "))
+        ra_size = float(input("Please enter the size of the region to search for reference stars in RA deg. default) 1 "))
+        dec_size = float(input("Please enter the size of the region to search for reference stars in DEC deg. default) 1 "))
+
+
     obs.set_mag_limit(mag_limit * u.mag)
     obs.set_mag_diff_limit(mag_diff_limit * u.mag)
     obs.set_col_diff_limit(col_diff_limit * u.mag)
@@ -28,18 +73,38 @@ def get_inputs(ra='23:6:29.37', dec='-5:02:29.04', G=15.62, bp=19.01, rp=14.10, 
     obs.set_dec_size(dec_size * u.deg)
 
     param = stellar_param()
-    # values for trappist-1
+
     param.set_ra(Angle('%s hours'%ra))
     param.set_dec(Angle('%s degrees'%dec))
     param.set_G(G * u.mag)
     param.set_bp(bp * u.mag)
     param.set_rp(rp * u.mag)
+
     
     return obs, param
 
 
 
 def generate_limits_clause(target, size, name):
+    """
+    This function generates the clause for the query.
+
+    args
+    ------
+    target : float
+        The target value.
+    size : float
+        The range of the value.
+    name : str
+        The name of the value.
+    
+
+    return
+    ------
+    clause : str
+        The clause for the query.
+    """
+    
     try: 
         hi = (target + size).to(u.deg)
     except:
