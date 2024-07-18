@@ -26,6 +26,7 @@ def generate_plot(obs, param, results, figsize=10):
     print(type(bp_rp))
     vmin=np.nanpercentile(bp_rp,10, method='nearest')
     vmax=np.nanpercentile(bp_rp,90, method='nearest')
+    plt.gca().invert_xaxis()
     plt.scatter(param.ra.to(u.deg), param.dec.to(u.deg), color = "w", marker = "*", s=1000)
 
     plt.scatter(results['ra'], results['dec'], c=results['bp_rp'], cmap='RdYlBu_r',s=results['mag_size'], vmin=vmin, vmax=vmax)
