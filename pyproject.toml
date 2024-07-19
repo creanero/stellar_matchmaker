@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "stellar_matchmaker"
-version= "0.0.1"
+version= "0.0.2"
 authors = [
   { name="Oisín Creaner", email="oisin.creaner@dcu.ie" },
   { name="Taehwa Yoo", email="t.yoo@ufl.edu" },
