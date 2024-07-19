@@ -9,7 +9,8 @@ version: 1
 build:
   os: macos-13.3.1
   tools:
-    python: "3.10"
+    python: 
+      version: 3.10
     # You can also specify other tool versions:
     # nodejs: "19"
     # rust: "1.64"
