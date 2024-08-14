@@ -25,7 +25,7 @@ def generate_plot(obs, param, results, figsize=10):
 
     """
     plt.style.use('dark_background')
-    plt.rcParams['text.usetex'] = True
+    #plt.rcParams['text.usetex'] = True
     fig = plt.figure(figsize=(figsize, figsize))
     bp_rp = np.array(results['bp_rp'])
     print(type(bp_rp))
@@ -45,7 +45,7 @@ def generate_plot(obs, param, results, figsize=10):
     plt.scatter(good_refs['ra'], good_refs['dec'], color = "limegreen", marker="o", s=20, facecolors='none')
     plt.gca().invert_xaxis()
     plt.show()
-    plt.save('~/results.png', dpi = 300)
+    #plt.save('~/results.png', dpi = 300)
 
 if __name__ == "__main__":
     main()
